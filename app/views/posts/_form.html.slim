@@ -1,0 +1,12 @@
+- if post.errors.present?
+   - post.errors.full_messages.each do |message|
+       = message
+
+=form_with model: post, local: true do |f|
+  .form_group
+    = f.label :title
+    = f.text_field :title, class: "form-control"
+  .form_group
+    = f.label :body
+    = f.text_area :body, class: "form-control"
+  = f.submit nil, class: "btn btn-primary"

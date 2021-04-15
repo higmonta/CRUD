@@ -1,0 +1,30 @@
+table
+  tbody
+    tr
+      th Title:
+      td= @post.title
+    tr
+      th Body:
+      td= @post.body
+
+h2
+  | Add comments
+= form_with(model: [ @post, @post.comments.build ], local: true) do |form|
+  p
+    = form.label :body
+    br
+    = form.text_area :body
+  p
+    = form.submit
+    
+h2
+  | Comments
+- @post.comments.each do |comment|
+  p
+    strong
+      | Comment:
+    = comment.body
+
+= link_to "Edit", edit_post_path(@post), class: "btn btn-primary mr-4"
+= link_to "Back", posts_path, class: "btn btn-primary"
+     
